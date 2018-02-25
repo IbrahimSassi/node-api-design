@@ -1,13 +1,14 @@
 import http from 'http';
 import { createServer } from 'http';
+import config from './config';
 
 import app from './server';
 
 const server = http.createServer(app);
 let currentApp = app;
 
-app.listen(3000, () => {
-	console.log('API ON PORT 3000');
+app.listen(config.port, () => {
+	console.log(`API ON PORT ${config.port}`);
 });
 
 if (module.hot) {

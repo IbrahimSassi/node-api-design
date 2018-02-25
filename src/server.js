@@ -9,7 +9,7 @@ const app = express();
 setupMiddware(app);
 connect();
 app.use('/signin', signin);
-app.use('/api', protect, restRouter);
+app.use('/api', restRouter);
 
 app.all('*', (req, res) => {
 	res.json({ ok: true });
