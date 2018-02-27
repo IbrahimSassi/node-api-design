@@ -5,8 +5,14 @@ const getMe = (_, __, { user }) => {
 	return user;
 };
 
+const getAll = () => User.find({}).exec();
+
 export const userResolvers = {
 	Query: {
-		getMe
+		getMe,
+		getAll
+	},
+	User: {
+		friends: user => ['joey']
 	}
 };
