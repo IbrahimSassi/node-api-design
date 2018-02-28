@@ -8,8 +8,8 @@ const getOneSong = (_, { id }) => {
 	return song;
 };
 
-const getAllSongs = () => {
-	const songs = Song.find({}).exec();
+const getAllSongs = async () => {
+	const songs = await Song.find({}).exec();
 
 	if (!songs.length) {
 		throw new Error('Cannot find those songs');
@@ -17,9 +17,22 @@ const getAllSongs = () => {
 	return songs;
 };
 
+const newSong = async (_, { input }) => {
+	return await Song.create(input);
+};
+const updateSong = async (_, { input }) => {
+	const { id, ...update } = input;
+
+	return await Song.findByIdAndUpdate(id, update, { new: true }).exec();
+};
+
 export const songResolvers = {
 	Query: {
 		Song: getOneSong,
 		Songs: getAllSongs
+	},
+	Mutation: {
+		newSong,
+		updateSong
 	}
 };

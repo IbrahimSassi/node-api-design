@@ -8,7 +8,8 @@ import { graphqlExpress } from 'apollo-server-express';
 // root definitions fop GraphQL
 const baseSchema = `
   schema {
-    query: Query
+		query: Query
+		mutation: Mutation
   }
 `;
 

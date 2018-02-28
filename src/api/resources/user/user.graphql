@@ -14,3 +14,7 @@ type Query {
   getMe: User!
   getAll: [User]!
 }
+
+type Mutation {
+  updateMe(input: UpdatedUser): User!
+}
