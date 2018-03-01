@@ -26,6 +26,9 @@ const updateSong = async (_, { input }) => {
 	return await Song.findByIdAndUpdate(id, update, { new: true }).exec();
 };
 
+const removeSong = (_, { input }) => {
+	return Song.findByIdAndRemove(input).exec();
+};
 export const songResolvers = {
 	Query: {
 		Song: getOneSong,
@@ -33,6 +36,7 @@ export const songResolvers = {
 	},
 	Mutation: {
 		newSong,
-		updateSong
+		updateSong,
+		removeSong
 	}
 };

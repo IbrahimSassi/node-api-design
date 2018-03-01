@@ -1,4 +1,5 @@
 import { User } from './user.model';
+import { Playlist } from '../playlist/playlist.model';
 import merge from 'lodash.merge';
 
 const getMe = (_, __, { user }) => {
@@ -21,6 +22,9 @@ export const userResolvers = {
 		updateMe
 	},
 	User: {
-		friends: user => ['joey']
+		friends: user => ['joey'],
+		playlists: async user => {
+			return await Playlist.find({}).exec();
+		}
 	}
 };

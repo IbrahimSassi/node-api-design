@@ -36,10 +36,12 @@ export const playlistResolvers = {
 		updatePlaylist
 	},
 	Playlist: {
-		songs: playlists => {
-			return playlists.songs.map(id => {
-				return Song.findById(id);
-			});
+		songs: async playlist => {
+			const populated = await playlist.populate('songs').execPopulate();
+			return populated.songs;
+			// return await playlist.songs.map(id => {
+			// 	return await Song.findById(id);
+			// });
 		}
 	}
 };
