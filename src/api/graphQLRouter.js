@@ -13,7 +13,7 @@ const baseSchema = `
   }
 `;
 
-const schema = makeExecutableSchema({
+export const schema = makeExecutableSchema({
 	// all the graphql files
 	typeDefs: [baseSchema, userType, songType, playlistType],
 	// all the resolvers

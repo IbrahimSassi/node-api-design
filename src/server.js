@@ -10,8 +10,8 @@ const app = express();
 setupMiddware(app);
 connect();
 app.use('/signin', signin);
-app.use('/graphql', graphQLRouter);
-app.use('/api', restRouter);
+app.use('/graphql', protect, graphQLRouter);
+app.use('/api', protect, restRouter);
 app.use('/docs', graphiqlExpress({ endpointURL: '/graphql' }));
 
 app.all('*', (req, res) => {

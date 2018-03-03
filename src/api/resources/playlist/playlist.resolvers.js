@@ -15,8 +15,6 @@ const newPlaylist = async (_, { input }) => {
 		songs: input.songs.map(song => ({ _id: song.id }))
 	};
 	const result = await Playlist.create(playlist);
-	console.log(result);
-
 	return result;
 };
 

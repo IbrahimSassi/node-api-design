@@ -8,6 +8,7 @@ type User {
 }
 
 input UpdatedUser {
+  id: ID!
   username: String!
 }
 
